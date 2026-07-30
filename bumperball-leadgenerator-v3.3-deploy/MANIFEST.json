@@ -1,0 +1,130 @@
+{
+  "LADDA-UPP.txt": {
+    "bytes": 1061,
+    "sha256": "df97334c86d0e4ab714103b2609f2f9c7bee8a36ce757882eb2e0e1bfcd0a3ef"
+  },
+  "bumperball-leadgenerator-v3.3/.env.example": {
+    "bytes": 1302,
+    "sha256": "0979ab46abd24649c00b8d94edc7b604a6e10e2961e33616c9f159d228c8a168"
+  },
+  "bumperball-leadgenerator-v3.3/.gitignore": {
+    "bytes": 75,
+    "sha256": "a0a477e4fc85b0ce44a19ed9d0a946024c8bb9c599244cec5c6610beb4476f22"
+  },
+  "bumperball-leadgenerator-v3.3/DEPLOYERA.md": {
+    "bytes": 2269,
+    "sha256": "0ece41df53f6f3591988649adac305afd9ab67bb164be24c46882d4d1131ddcd"
+  },
+  "bumperball-leadgenerator-v3.3/Dockerfile": {
+    "bytes": 148,
+    "sha256": "93f1c7562f71dd2affc159dddb5dd6b0f6fc1cd39452253541bb440995eb4d1d"
+  },
+  "bumperball-leadgenerator-v3.3/README.md": {
+    "bytes": 2797,
+    "sha256": "0615961901d0c2e4e04f8ad1b753ef114d97dcaeb2319d8f7a53e959d28c8885"
+  },
+  "bumperball-leadgenerator-v3.3/docker-compose.yml": {
+    "bytes": 557,
+    "sha256": "6b5a4164d01413c49b8f9694c1374d7fd11b32826b241a80be2e99ee83e2f228"
+  },
+  "bumperball-leadgenerator-v3.3/package.json": {
+    "bytes": 1041,
+    "sha256": "87a30758ba3958561afa8bb07bb7c4c3e230bb8228cdf9481a1ba055863a2060"
+  },
+  "bumperball-leadgenerator-v3.3/public/app.js": {
+    "bytes": 25883,
+    "sha256": "29f5fd146233db07f116347acac8af0503621f98515b5c444f83a617a2e18340"
+  },
+  "bumperball-leadgenerator-v3.3/public/index.html": {
+    "bytes": 15721,
+    "sha256": "e5e424e67a8b8ae92b45bd18b67cbf092c19fd58fb06b4f4e616a3f327427f9e"
+  },
+  "bumperball-leadgenerator-v3.3/public/styles.css": {
+    "bytes": 11283,
+    "sha256": "587919768d5fedd383a4d8e4128cd15d42688abafba3990d7818d5fc4ab9bf67"
+  },
+  "bumperball-leadgenerator-v3.3/render.yaml": {
+    "bytes": 3260,
+    "sha256": "7320f8eae131f3fdf476222ace8256cd98c6e519cf6cb9aac769e195a8d91a7f"
+  },
+  "bumperball-leadgenerator-v3.3/scripts/discover.js": {
+    "bytes": 499,
+    "sha256": "3e2974c711f5adacb01c67cfdbb436d5ae772b1d6147f3739e06e83683fa8938"
+  },
+  "bumperball-leadgenerator-v3.3/scripts/trigger-discovery.js": {
+    "bytes": 1097,
+    "sha256": "10ffad67237f28c85a6254f610873a9e2f3ee03521a14e8c32e7f56b17d20743"
+  },
+  "bumperball-leadgenerator-v3.3/server.js": {
+    "bytes": 4387,
+    "sha256": "fe91fa825d9524910c5c7ebb97caf54f20b15ead319f1b5b7ac44eb470f0affd"
+  },
+  "bumperball-leadgenerator-v3.3/sql/schema.sql": {
+    "bytes": 4336,
+    "sha256": "05d22821c8ae38e1ed0b88d1e18a4d7c9a47b52c56a4bde1c0f8c58852e39288"
+  },
+  "bumperball-leadgenerator-v3.3/src/auth.js": {
+    "bytes": 2882,
+    "sha256": "a9289219859e378babb1512d9f161ae79f34b71606daf150ee77dbe076cd183b"
+  },
+  "bumperball-leadgenerator-v3.3/src/booking.js": {
+    "bytes": 3336,
+    "sha256": "0cf6a4ec7ca106e222a1ea3acef7f0790f6b712fd173cc8df62218b1f8b99c80"
+  },
+  "bumperball-leadgenerator-v3.3/src/config.js": {
+    "bytes": 3655,
+    "sha256": "0baab21b0bb69423817f3aa0d55a080f7b0a60215badbaf19d9b0ff106ca7647"
+  },
+  "bumperball-leadgenerator-v3.3/src/crypto.js": {
+    "bytes": 942,
+    "sha256": "fe25dcc83d30b50dac30e734840f2419b23b68c80150075dfb277ff76dbd1c30"
+  },
+  "bumperball-leadgenerator-v3.3/src/db.js": {
+    "bytes": 1246,
+    "sha256": "665ef6470128c74c81b1d5613ea8d62578abac73ef8a1b7a32a4e40761fb7632"
+  },
+  "bumperball-leadgenerator-v3.3/src/discovery-utils.js": {
+    "bytes": 2597,
+    "sha256": "120b71d9381f8a9a713aa503fe639e5afb90be6a405d0ad0155ecd33711903b4"
+  },
+  "bumperball-leadgenerator-v3.3/src/discovery.js": {
+    "bytes": 31752,
+    "sha256": "a1dbbcd0dda4f4af68469a91bdebcf243ccdf3928318118c993f70b6ca68fab4"
+  },
+  "bumperball-leadgenerator-v3.3/src/gmail.js": {
+    "bytes": 10626,
+    "sha256": "0f65d5d87774472f8a6a26c4448e5c6eb8dadfa01795e87bcae1e55e1d12c927"
+  },
+  "bumperball-leadgenerator-v3.3/src/lead.js": {
+    "bytes": 6542,
+    "sha256": "8f1008d2903cfecda816eccab67be368c223fff0fb38a04720be1b2cf5b14bc8"
+  },
+  "bumperball-leadgenerator-v3.3/src/pricing.js": {
+    "bytes": 1853,
+    "sha256": "df4ed0b6bd49ad1ee67ac438c25f012df696adcc4526111aca0aef6f78fb94de"
+  },
+  "bumperball-leadgenerator-v3.3/src/routes.js": {
+    "bytes": 15084,
+    "sha256": "1ae57b8f11cc8981d087d9f57e2b2c9bc4156e48ca933b53c3e3fcc14115e62a"
+  },
+  "bumperball-leadgenerator-v3.3/src/skolverket.js": {
+    "bytes": 1411,
+    "sha256": "fe1da2aef797feea586532ce1c7405030b2fba6c7b86d5edcdc65d509ae9eaa1"
+  },
+  "bumperball-leadgenerator-v3.3/tests/booking.test.js": {
+    "bytes": 1059,
+    "sha256": "43b12263b04bb51734135fa3d1362ee405148890e66abfce670ba267cc40dbf0"
+  },
+  "bumperball-leadgenerator-v3.3/tests/discovery.test.js": {
+    "bytes": 1954,
+    "sha256": "0356bf2bacec0d4455180c3061404a871e4ac2a8c05d40404f4d4aa0d09e1936"
+  },
+  "bumperball-leadgenerator-v3.3/tests/lead.test.js": {
+    "bytes": 1065,
+    "sha256": "206f55d17c439d21d0e0e39c970314f850b3abb63df94e2ca84b5acca6892dd4"
+  },
+  "render.yaml": {
+    "bytes": 3260,
+    "sha256": "7320f8eae131f3fdf476222ace8256cd98c6e519cf6cb9aac769e195a8d91a7f"
+  }
+}
