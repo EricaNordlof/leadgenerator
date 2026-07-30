@@ -1,0 +1,4 @@
+organization,segment,city,contactName,email,phone,website,sourceUrl,sourceType,sourceCheckedAt,occasion,productType,participants,eventDate,intent,locationFit,recurring,opportunity,status,followup,notes
+Söderparkens Fritids,school,Malmö,Aktivitetsansvarig,fritids@example.se,,https://example.se,https://example.se/fritids,municipality,2026-07-30,school_activity,children,24,,high,malmo,true,Ordnar lovaktiviteter och har tillgång till idrottshall,qualified,,Kontakta skriftligt
+Västra Hamnens Fotboll Ungdom,football,Malmö,Ungdomsansvarig,,,https://example.com,https://example.com/kontakt,google,2026-07-30,football_activity,unknown,18,,low,malmo,true,Har flera ungdomslag och säsongsavslutningar,new,,
+Öresund Teamdag AB,company,Lund,HR,hr@example.se,,https://example.org,https://example.org/om-oss,google,2026-07-30,kickoff,adult,20,2026-09-18,high,skane,false,Planerar kickoff i september och söker aktivitet,contacted,2026-08-05,Vuxenbollar finns tillgängliga före datumet
