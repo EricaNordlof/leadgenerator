@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Bumperball Leadgenerator Pro för Offroad Bumpis." />
+  <meta name="theme-color" content="#123b1d" />
+  <title>Bumperball Leadgenerator Pro | Offroad Bumpis</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section id="loginView" class="login-shell">
+    <div class="login-card">
+      <div class="brand-mark">OB</div>
+      <p class="eyebrow">Offroad Bumpis · Nordlöf Nordic</p>
+      <h1>Leadgenerator Pro</h1>
+      <p class="muted">Gemensam pipeline, daglig leadinsamling, Gmail-utkast och bokningskoppling.</p>
+      <form id="loginForm" class="stack-form">
+        <label>E-post<input id="loginEmail" type="email" autocomplete="username" value="kontakt@offroadbumpis.se" required /></label>
+        <label>Lösenord<input id="loginPassword" type="password" autocomplete="current-password" minlength="8" required /></label>
+        <button class="button primary full" type="submit">Logga in</button>
+      </form>
+      <p id="loginError" class="error-text" hidden></p>
+    </div>
+  </section>
+
+  <div id="appView" hidden>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Offroad Bumpis · Nordlöf Nordic</p>
+        <h1>Bumperball Leadgenerator Pro</h1>
+        <p class="subtitle">Nya offentliga leads varje dag. Du granskar och väljer vem som ska få ett mejlutkast.</p>
+      </div>
+      <div class="top-actions">
+        <span id="mailboxBadge" class="status-pill neutral">Gmail ej ansluten</span>
+        <button id="runDiscoveryBtn" class="button ghost" type="button">Hämta leads nu</button>
+        <button id="addLeadBtn" class="button accent" type="button">+ Ny lead</button>
+        <button id="logoutBtn" class="button ghost" type="button">Logga ut</button>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="product-strip">
+        <article class="product-card children">
+          <div class="product-icon">7–12</div>
+          <div><p class="eyebrow">Bokningsbara nu</p><h2>Barnbollar</h2><p>7–12 år, max 60 kg. Kalas, skolor, fritids, lag och föreningar.</p></div>
+        </article>
+        <article class="product-card adult">
+          <div class="product-icon">12+</div>
+          <div><p class="eyebrow">Från 1 september 2026</p><h2>Vuxenbollar</h2><p>Från 12 år, max 90 kg. Kickoff, teambuilding, möhippa, svensexa och event.</p></div>
+        </article>
+      </section>
+
+      <section id="statsGrid" class="stats-grid">
+        <article><span id="statToday">0</span><small>Nya idag</small></article>
+        <article><span id="statHot">0</span><small>Heta leads</small></article>
+        <article><span id="statDue">0</span><small>Att följa upp</small></article>
+        <article><span id="statQuoted">0</span><small>Offerter</small></article>
+        <article><span id="statWon">0</span><small>Bokade</small></article>
+        <article><span id="statTotal">0</span><small>Totalt</small></article>
+      </section>
+
+      <nav class="tabs" aria-label="Vyer">
+        <button class="tab active" data-view="today">Dagens nya</button>
+        <button class="tab" data-view="pipeline">Pipeline</button>
+        <button class="tab" data-view="integrations">Integrationer</button>
+      </nav>
+
+      <section id="leadsView">
+        <div class="filters card">
+          <input id="searchInput" type="search" placeholder="Sök organisation, ort, aktivitet eller kontakt…" />
+          <select id="segmentFilter">
+            <option value="all">Alla målgrupper</option>
+            <option value="school">Skolor & fritids</option>
+            <option value="football">Fotbollsklubbar</option>
+            <option value="association">Föreningar</option>
+            <option value="company">Företag</option>
+            <option value="event">Eventbyråer</option>
+            <option value="venue">Event- & konferenslokaler</option>
+            <option value="private">Privata arrangörer</option>
+            <option value="other">Övriga</option>
+          </select>
+          <select id="productFilter">
+            <option value="all">Alla bolltyper</option>
+            <option value="children">Barnbollar</option>
+            <option value="adult">Vuxenbollar</option>
+            <option value="both">Barn + vuxen</option>
+            <option value="unknown">Ej bedömt</option>
+          </select>
+          <select id="statusFilter">
+            <option value="all">Alla statusar</option>
+            <option value="new">Ny</option>
+            <option value="qualified">Kvalificerad</option>
+            <option value="contacted">Kontaktad</option>
+            <option value="followup">Följ upp</option>
+            <option value="quoted">Offert skickad</option>
+            <option value="won">Bokad</option>
+            <option value="lost">Inte aktuell</option>
+          </select>
+          <select id="sortFilter">
+            <option value="score">Högst poäng</option>
+            <option value="newest">Nyast</option>
+            <option value="followup">Närmaste uppföljning</option>
+            <option value="organization">Organisation A–Ö</option>
+          </select>
+        </div>
+
+        <section class="lead-layout">
+          <article class="card table-card">
+            <div class="section-heading">
+              <div><p class="eyebrow" id="listEyebrow">Dagens arbetslista</p><h2 id="listTitle">Nya leads att granska</h2></div>
+              <span id="listCount" class="count-badge">0</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Organisation</th><th>Målgrupp</th><th>Matchning</th><th>Poäng</th><th>Status</th></tr></thead>
+                <tbody id="leadRows"></tbody>
+              </table>
+            </div>
+            <div id="emptyState" class="empty-state" hidden>
+              <h3>Inga leads här ännu</h3>
+              <p>Kör leadinsamlingen manuellt eller invänta nästa dagliga körning.</p>
+            </div>
+          </article>
+
+          <aside class="card quick-panel">
+            <p class="eyebrow">Dagens rutin</p>
+            <h2>Tre steg, inga massutskick</h2>
+            <ol>
+              <li>Granska nya leads och kontrollera kontaktvägen.</li>
+              <li>Skapa ett personligt Gmail-utkast för rätt lead.</li>
+              <li>Följ upp och omvandla vunnen lead till offert eller bokning.</li>
+            </ol>
+            <button id="connectGmailQuickBtn" class="button secondary full" type="button">Anslut Gmail</button>
+            <p class="fineprint">Systemet skickar aldrig massmejl automatiskt.</p>
+          </aside>
+        </section>
+      </section>
+
+      <section id="integrationsView" hidden>
+        <div class="integration-grid">
+          <article class="card integration-card">
+            <div class="integration-icon">✉</div>
+            <p class="eyebrow">Brevlåda</p>
+            <h2>Gmail / Google Workspace</h2>
+            <p id="gmailStatusText" class="muted">Inte ansluten.</p>
+            <div class="button-row"><button id="connectGmailBtn" class="button primary" type="button">Anslut Gmail</button><button id="disconnectGmailBtn" class="button danger" type="button" hidden>Koppla bort</button></div>
+          </article>
+
+          <article class="card integration-card">
+            <div class="integration-icon">◎</div>
+            <p class="eyebrow">Leadkälla</p>
+            <h2>Offentliga källor</h2>
+            <p id="discoveryStatusText" class="muted">Skolverkets öppna API och OpenStreetMap är aktiva. Extra officiella kommunala JSON/CSV-feeds kan läggas till via miljövariabler.</p>
+            <button id="runDiscoveryIntegrationBtn" class="button primary" type="button">Kör insamling nu</button>
+          </article>
+
+          <article class="card integration-card">
+            <div class="integration-icon">↗</div>
+            <p class="eyebrow">Bokningskoppling</p>
+            <h2>Offert och bokning</h2>
+            <p id="bookingStatusText" class="muted">Vunna leads kan omvandlas till bokningsunderlag och öppnas i bokningsappen.</p>
+          </article>
+        </div>
+
+        <article class="card runs-card">
+          <div class="section-heading"><div><p class="eyebrow">Automatik</p><h2>Senaste leadkörningar</h2></div></div>
+          <div id="runList" class="run-list"></div>
+        </article>
+
+        <article id="legacyMigrationCard" class="card migration-card" hidden>
+          <div><p class="eyebrow">Flytta gamla data</p><h2>Lokala v2-leads hittades</h2><p class="muted">Importera dem till PostgreSQL så att de syns på både mobil och dator.</p></div>
+          <button id="migrateLegacyBtn" class="button primary" type="button">Importera gamla leads</button>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="leadDialog" class="modal">
+    <form id="leadForm" method="dialog">
+      <div class="modal-header"><div><p class="eyebrow">Lead</p><h2 id="leadDialogTitle">Ny bumperball-lead</h2></div><button class="icon-button" value="cancel" aria-label="Stäng">×</button></div>
+      <div class="form-grid">
+        <label>Organisation<input name="organization" required /></label>
+        <label>Målgrupp<select name="segment"><option value="school">Skola & fritids</option><option value="football">Fotbollsklubb</option><option value="association">Förening</option><option value="company">Företag</option><option value="event">Eventbyrå</option><option value="venue">Event-/konferenslokal</option><option value="private">Privat arrangör</option><option value="other">Övrig</option></select></label>
+        <label>Ort<input name="city" value="Malmö" /></label>
+        <label>Kontaktperson<input name="contact_name" /></label>
+        <label>E-post<input name="email" type="email" /></label>
+        <label>Telefon<input name="phone" /></label>
+        <label>Webbplats<input name="website" placeholder="https://…" /></label>
+        <label>Käll-URL<input name="source_url" placeholder="https://…" /></label>
+        <label>Aktivitet<select name="occasion"><option value="school_activity">Skolaktivitet / idrottsdag</option><option value="birthday">Barnkalas</option><option value="football_activity">Lagaktivitet / avslutning</option><option value="association_day">Föreningsdag</option><option value="kickoff">Kickoff / teambuilding</option><option value="family_day">Familjedag</option><option value="hen_party">Möhippa</option><option value="stag_party">Svensexa</option><option value="event">Event / festival</option><option value="other">Annan</option></select></label>
+        <label>Bolltyp<select name="product_type"><option value="children">Barnbollar</option><option value="adult">Vuxenbollar</option><option value="both">Barn + vuxen</option><option value="unknown">Ej bedömt</option></select></label>
+        <label>Deltagare<input name="participants" type="number" min="1" max="500" /></label>
+        <label>Eventdatum<input name="event_date" type="date" /></label>
+        <label>Köpsignal<select name="intent"><option value="high">Tydligt behov</option><option value="medium">Möjlig matchning</option><option value="low">Svag/långsiktig</option><option value="unknown">Ej bedömd</option></select></label>
+        <label>Status<select name="status"><option value="new">Ny</option><option value="qualified">Kvalificerad</option><option value="contacted">Kontaktad</option><option value="followup">Följ upp</option><option value="quoted">Offert skickad</option><option value="won">Bokad</option><option value="lost">Inte aktuell</option></select></label>
+        <label>Nästa uppföljning<input name="followup" type="date" /></label>
+        <label class="checkbox-field"><input name="recurring" type="checkbox" /> Kan ge återkommande bokningar</label>
+        <label class="span-2">Möjlighet<textarea name="opportunity" rows="3"></textarea></label>
+        <label class="span-2">Anteckningar<textarea name="notes" rows="3"></textarea></label>
+      </div>
+      <div class="modal-actions"><button class="button secondary" value="cancel">Avbryt</button><button id="saveLeadBtn" class="button primary" type="submit">Spara lead</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="detailDialog" class="modal detail-modal">
+    <div class="modal-header"><div><p class="eyebrow">Leadkort</p><h2 id="detailOrganization">Organisation</h2><p id="detailMeta" class="muted"></p></div><button id="closeDetailBtn" class="icon-button" aria-label="Stäng">×</button></div>
+    <div class="detail-grid">
+      <section>
+        <div class="score-line"><div id="detailScore" class="big-score">0</div><div><span id="detailTemperature" class="status-pill neutral">Ej bedömd</span><p id="detailRecommendation" class="recommendation"></p></div></div>
+        <details class="score-details"><summary>Varför denna poäng?</summary><ul id="scoreReasons"></ul></details>
+        <dl class="detail-list">
+          <div><dt>Målgrupp</dt><dd id="detailSegment"></dd></div>
+          <div><dt>Aktivitet</dt><dd id="detailOccasion"></dd></div>
+          <div><dt>Kontakt</dt><dd id="detailContact"></dd></div>
+          <div><dt>Webbplats</dt><dd id="detailWebsite"></dd></div>
+          <div><dt>Källa</dt><dd id="detailSource"></dd></div>
+          <div><dt>Möjlighet</dt><dd id="detailOpportunity"></dd></div>
+        </dl>
+        <div class="button-row wrap"><button id="editLeadBtn" class="button secondary">Redigera</button><button id="deleteLeadBtn" class="button danger">Ta bort</button></div>
+      </section>
+      <section class="action-panel">
+        <p class="eyebrow">Kontaktassistent</p>
+        <h3>Personligt mejlutkast</h3>
+        <select id="draftType"><option value="first">Första kontakt</option><option value="followup">Kort uppföljning</option><option value="event">Inför event</option></select>
+        <button id="previewDraftBtn" class="button secondary full">Förhandsvisa text</button>
+        <label>Ämnesrad<input id="draftSubject" readonly /></label>
+        <label>Meddelande<textarea id="draftBody" rows="10" readonly></textarea></label>
+        <div class="button-row"><button id="copyDraftBtn" class="button secondary">Kopiera</button><button id="createGmailDraftBtn" class="button primary">Skapa i Gmail</button></div>
+        <hr />
+        <p class="eyebrow">Avslut</p>
+        <h3>Offert eller bokning</h3>
+        <div class="button-row"><button id="createQuoteBtn" class="button secondary">Skapa offertunderlag</button><button id="createBookingBtn" class="button accent">Skapa bokning</button></div>
+        <a id="handoffLink" class="handoff-link" target="_blank" rel="noopener" hidden>Öppna bokningsunderlaget ↗</a>
+      </section>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+  <footer class="site-footer">Företagsuppgifter: Nordlöf Nordic · kontakt@offroadbumpis.se · 0793442520. Leaddata visas med källa. Skolverkets öppna data följer källicensen Creative Commons och OpenStreetMap-data omfattas av ODbL.</footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
