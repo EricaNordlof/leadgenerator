@@ -1,0 +1,59 @@
+BUMPERBALL LEADGENERATOR PRO V3.3.1
+
+Denna version rättar Gmail-formuläret:
+
+- Ämnesrad och meddelande går att skriva och klistra in i.
+- Knappen Skapa i Gmail använder exakt texten som står i fälten.
+- Om båda fälten är tomma skapas standardmallen automatiskt.
+- Om bara ett fält är ifyllt stoppas skapandet så att egen text inte skrivs över.
+- Anpassad text sparas i databasen tillsammans med Gmail-utkastet.
+
+LADDA UPP TILL GITHUB-REPOTS ROT
+
+1. Hela mappen:
+   bumperball-leadgenerator-v3.3.1-deploy
+
+2. Filen:
+   render.yaml
+
+Repo efter uppladdning:
+
+leadgenerator/
+├── render.yaml
+├── bumperball-leadgenerator-v3.3.1-deploy/
+│   └── bumperball-leadgenerator-v3.3.1/
+│       ├── package.json
+│       ├── server.js
+│       ├── public/
+│       ├── scripts/
+│       ├── src/
+│       └── tests/
+└── tidigare versionsmappar...
+
+Commit:
+Fix editable Gmail drafts v3.3.1
+
+Kör sedan:
+Render → Blueprints → offroad-bumpis-production → Manual sync
+
+Både webbtjänst och cron ska få Root Directory:
+bumperball-leadgenerator-v3.3.1-deploy/bumperball-leadgenerator-v3.3.1
+
+TEST EFTER DEPLOY
+
+1. Öppna en lead med e-postadress.
+2. Klicka Skapa eller återställ mall.
+3. Markera ämnesraden och klistra in egen text.
+4. Markera meddelandet och klistra in egen text.
+5. Klicka Skapa i Gmail.
+6. Kontrollera Gmail → Utkast.
+7. Utkastet ska innehålla exakt den redigerade texten.
+
+Hemligheter ligger kvar i Render. Lägg aldrig dessa i GitHub:
+ADMIN_PASSWORD
+GMAIL_CLIENT_ID
+GMAIL_CLIENT_SECRET
+SESSION_SECRET
+APP_ENCRYPTION_KEY
+CRON_SECRET
+BOOKING_WEBHOOK_SECRET
