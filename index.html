@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Leadgenerator för Nordlöf Nordic – hitta, prioritera och bearbeta potentiella kunder." />
+  <title>Leadgenerator | Nordlöf Nordic</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Nordlöf Nordic</p>
+      <h1>Leadgenerator</h1>
+      <p class="subtitle">Samla företag, prioritera rätt leads och skapa personliga kontaktutkast.</p>
+    </div>
+    <div class="header-actions">
+      <label class="button secondary" for="csvInput">Importera CSV</label>
+      <input id="csvInput" type="file" accept=".csv,text/csv" hidden />
+      <button class="button secondary" id="exportBtn">Exportera CSV</button>
+      <button class="button" id="addLeadBtn">+ Ny lead</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="stats" aria-label="Översikt">
+      <article><span id="totalCount">0</span><small>Totalt</small></article>
+      <article><span id="hotCount">0</span><small>Heta leads</small></article>
+      <article><span id="contactedCount">0</span><small>Kontaktade</small></article>
+      <article><span id="wonCount">0</span><small>Vunna</small></article>
+    </section>
+
+    <section class="controls card">
+      <input id="searchInput" type="search" placeholder="Sök företag, ort, bransch eller behov…" />
+      <select id="statusFilter">
+        <option value="all">Alla statusar</option>
+        <option value="new">Ny</option>
+        <option value="qualified">Kvalificerad</option>
+        <option value="contacted">Kontaktad</option>
+        <option value="followup">Följ upp</option>
+        <option value="won">Vunnen</option>
+        <option value="lost">Förlorad</option>
+      </select>
+      <select id="scoreFilter">
+        <option value="all">Alla poäng</option>
+        <option value="hot">Het: 75–100</option>
+        <option value="warm">Varm: 50–74</option>
+        <option value="cold">Kall: 0–49</option>
+      </select>
+      <select id="sortSelect">
+        <option value="score-desc">Högst poäng</option>
+        <option value="updated-desc">Senast ändrad</option>
+        <option value="company-asc">Företag A–Ö</option>
+      </select>
+    </section>
+
+    <section class="layout">
+      <div class="card table-card">
+        <div class="section-heading">
+          <div><p class="eyebrow">Pipeline</p><h2>Leads</h2></div>
+          <button class="text-button" id="clearDemoBtn">Rensa demo</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Företag</th><th>Matchning</th><th>Poäng</th><th>Status</th><th>Nästa steg</th></tr></thead>
+            <tbody id="leadRows"></tbody>
+          </table>
+        </div>
+        <p class="empty" id="emptyState" hidden>Inga leads matchar filtreringen.</p>
+      </div>
+
+      <aside class="card detail-card" id="detailPanel">
+        <p class="eyebrow">Vald lead</p>
+        <h2 id="detailCompany">Välj ett företag</h2>
+        <p id="detailMeta" class="muted">Klicka på en rad för att se detaljer och skapa kontaktutkast.</p>
+        <div id="detailContent" hidden>
+          <div class="score-box"><span id="detailScore">0</span><small>leadscore</small></div>
+          <dl class="details">
+            <div><dt>Webbplats</dt><dd id="detailWebsite"></dd></div>
+            <div><dt>Kontakt</dt><dd id="detailContact"></dd></div>
+            <div><dt>Behov</dt><dd id="detailNeed"></dd></div>
+            <div><dt>Rekommenderat projekt</dt><dd id="detailProject"></dd></div>
+          </dl>
+          <label>Status<select id="detailStatus"></select></label>
+          <label>Nästa uppföljning<input id="detailFollowup" type="date" /></label>
+          <label>Anteckningar<textarea id="detailNotes" rows="4"></textarea></label>
+          <button class="button full" id="generateMessageBtn">Skapa kontaktutkast</button>
+          <textarea id="messageOutput" rows="10" placeholder="Kontaktutkastet visas här…"></textarea>
+          <div class="split-actions">
+            <button class="button secondary" id="copyMessageBtn">Kopiera</button>
+            <button class="button danger" id="deleteLeadBtn">Ta bort</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <dialog id="leadDialog">
+    <form method="dialog" id="leadForm">
+      <div class="section-heading"><h2 id="dialogTitle">Ny lead</h2><button class="icon-button" value="cancel" aria-label="Stäng">×</button></div>
+      <div class="form-grid">
+        <label>Företag<input name="company" required /></label>
+        <label>Bransch<input name="industry" placeholder="Ex. bygg, fastighet, restaurang" /></label>
+        <label>Ort<input name="city" placeholder="Ex. Malmö" /></label>
+        <label>Webbplats<input name="website" placeholder="https://…" /></label>
+        <label>Kontaktperson<input name="contactName" /></label>
+        <label>E-post<input name="email" type="email" /></label>
+        <label class="span-2">Bedömt behov<textarea name="need" rows="3" placeholder="Vad kan förbättras eller säljas?"></textarea></label>
+        <label>Webbstatus<select name="webQuality"><option value="0">Okänd</option><option value="5">Bra</option><option value="15">Omodern</option><option value="25">Saknar webbplats</option></select></label>
+        <label>Kontaktuppgifter<select name="hasContact"><option value="0">Saknas</option><option value="10">Finns</option></select></label>
+        <label>Lokal matchning<select name="localFit"><option value="0">Nej/okänd</option><option value="15">Malmö/Skåne</option></select></label>
+        <label>Tydligt affärsbehov<select name="needStrength"><option value="0">Oklart</option><option value="15">Möjligt</option><option value="30">Tydligt</option></select></label>
+      </div>
+      <menu><button value="cancel" class="button secondary">Avbryt</button><button value="default" class="button" id="saveLeadBtn">Spara lead</button></menu>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
