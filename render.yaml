@@ -89,7 +89,8 @@ services:
 
 databases:
   - name: bumperball-leads-db
-    plan: free
+    plan: basic-256mb
+    diskSizeGB: 1
     region: frankfurt
     postgresMajorVersion: "18"
     databaseName: bumperball_leads
